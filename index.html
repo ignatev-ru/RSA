@@ -1,0 +1,103 @@
+<head>
+    <title>М4О-411Б-19 Игнатьев А.С. RSA шифрование</title>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<!DOCTYPE html>
+<html lang="ru">
+
+
+<body>
+        <main class="page">
+
+            <div class="wrapper">
+                <h1>RSA шифрование</h1>
+                <h1>Генерация публичного и приватного ключей</h1>
+                <p>Введите два простых числа и нажмите "рассчитать"</p>
+                <div>
+                    <div>
+                        <p>P: <input class="input" type="text" id="p" value="577 (по условию)" readonly></p>
+                    </div>
+                    <div>
+                        <p>Q: <input class="input" type="text" id="q" value="8387 (по условию)" readonly></p>
+                    </div>
+                    <div><span class="help">Простые числа: 11, 13, 17, 19, 23, 29, 191, 193, 197, 199, и тд. </span>
+                    </div>
+                </div>
+                <p>
+                <button onclick="calculate()">Рассчитать</button>
+                <button onclick="edit()">Редактировать P и Q</button>
+                </p>
+                
+                <div>
+                    <div>
+                        <h4 class="help">Результат умножения простых чисел:</h4>
+                        <p>N = P * Q = <input type="text" id="n" class="input" readonly /></p>
+                    </div>
+                    <div>
+                        <h4 class="help">Функция Эйлера:</h4>
+                        <p>Φ = (P - 1) * (Q - 1) = <input type="text" id="f" class="input" readonly /></p>
+                    </div>
+                    <div>
+                        <h4 class="help">Открытая экспонента (должна быть не взаимнопростой с функцией Эйлера):</h4>
+                        <p>E = <input type="text" id="e" class="input" onchange="encryptorChanged()" /></p>
+                        <p class="help-mini">Найдите число от 1 до Φ, которое является взаимно простым с Φ и N. Возможными ключами шифрования являются:<span id="enKeyListSpan"></span></p>
+
+                    </div>
+                    <div>
+                        <h4 class="help">Закрытая экспонента (D * E mod Φ = 1):</h4>
+                        <p>D = <input type="text" id="d" class="input" onchange="decryptorChanged()" /></p>
+                        <p class="help-mini">Остаток от произведения D и E при делении на Φ должен составлять 1 (D * E % Φ = 1) Возможные ключи расшифровки:<span id="deKeyListSpan"></span></p>
+                    </div>
+                </div>
+                                
+                
+                
+                <section>
+                    <div class="key">
+                        <span class="key-label">Приватный ключ (E, N): </span><span id="private-key"
+                            class="key-value"></span>
+                    </div>
+                    <div class="key">
+                        <span class="key-label">Публичный ключ (D, N): </span><span id="public-key"
+                            class="key-value"></span>
+                    </div>
+                </section>
+
+
+                <h1>Шифрование</h1>
+                <p>Введите сообщение: <input type="text" id="message" /></p>
+                
+                <p><button onclick="encrypt()">Зашифровать</button></p>
+                <img src="/img/table.png" class="img">
+                <p class="help-mini">Используйте алфавит из таблицы</p>
+                <p>Сообщение, в десятичном виде (см.таблицу): <span id="decimal"></span></p>
+                <div class="key">
+                    <span class="key-label">Зашифрованное сообщение (message^E % N): </span><span id="encrypted-msg"
+                        class="key-value"></span>
+                </div>
+
+            
+                <h1>Дешифрование</h1>
+                <p>Введите зашифрованное сообщение: <input type="text" id="encrypted-msg-textbox" /></p>
+                <p><button onclick="decrypt()">Дешифровать</button></p>
+                
+                
+                <p>Дешифрованное сообщение в десятичном виде: <span id="decimal-decrypted"></span></p>
+                <div class="key">
+                    <span class="key-label">Дешифрованное сообщение (encrypted_message^D % N): </span><span id="decrypted-msg" class="key-value"></ы>
+                </div>
+                
+            
+            <br>
+            <br>
+            </div>
+        </main>
+    <script src="app.js"></script>
+</body>
+
+</html>
