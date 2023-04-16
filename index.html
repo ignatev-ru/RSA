@@ -44,14 +44,14 @@
                     </div>
                     <div>
                         <h4 class="help">Открытая экспонента (должна быть взаимнопростой с функцией Эйлера):</h4>
-                        <p>E = <input type="text" id="e" class="input" onchange="encryptorChanged()" /></p>
-                        <p class="help-mini">Найдите число от 1 до Φ, которое является взаимно простым с Φ и N. Возможными ключами шифрования являются:<span id="enKeyListSpan"></span></p>
+                        <p>E = <input type="text" id="e" class="input" value="5" onchange="encryptorChanged()" /></p>
+                        <p class="help-mini">Найдите число от 1 до Φ, которое является взаимно простым с Φ и N.</p>
 
                     </div>
                     <div>
                         <h4 class="help">Закрытая экспонента (D * E mod Φ = 1):</h4>
-                        <p>D = <input type="text" id="d" class="input" onchange="decryptorChanged()" /></p>
-                        <p class="help-mini">Остаток от произведения D и E при делении на Φ должен составлять 1 (D * E % Φ = 1) Возможные ключи расшифровки:<span id="deKeyListSpan"></span></p>
+                        <p>D = <input type="text" id="d" class="input" value="8694605" onchange="decryptorChanged()" /></p>
+                        <p class="help-mini">Остаток от произведения D и E при делении на Φ должен составлять 1 (D * E % Φ = 1)</p>
                     </div>
                 </div>
                                 
@@ -59,11 +59,11 @@
                 
                 <section>
                     <div class="key">
-                        <span class="key-label">Приватный ключ (E, N): </span><span id="private-key"
+                        <span class="key-label">Публичный ключ (E, N): </span><span id="private-key"
                             class="key-value"></span>
                     </div>
                     <div class="key">
-                        <span class="key-label">Публичный ключ (D, N): </span><span id="public-key"
+                        <span class="key-label">Приватный ключ (D, N): </span><span id="public-key"
                             class="key-value"></span>
                     </div>
                 </section>
@@ -73,7 +73,7 @@
                 <p>Введите сообщение: <input type="text" id="message" /></p>
                 
                 <p><button onclick="encrypt()">Зашифровать</button></p>
-                <img src="img/table.png" class="img">
+                <img src="/img/table.png" class="img">
                 <p class="help-mini">Используйте алфавит из таблицы</p>
                 <p>Сообщение, в десятичном виде (см.таблицу): <span id="decimal"></span></p>
                 <div class="key">
